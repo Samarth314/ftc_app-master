@@ -26,8 +26,8 @@
  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
-package org.firstinspires.ftc.robotcontroller.external.samples;
+ 
+package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -55,10 +55,18 @@ import com.qualcomm.robotcore.util.Range;
 public class PracticeLinearOpMode extends LinearOpMode {
 
     private DcMotor rightFront;
+//    private DcMotor leftFront;
+//    private DcMotor leftBack;
+//    private DcMotor rightBack;
+
 
     @Override
     public void runOpMode() {
 
+//        leftFront = hardwareMap.get(DcMotor.class, "LF");
+        rightFront = hardwareMap.get(DcMotor.class, "RF");
+//        leftBack =  hardwareMap.get(DcMotor.class, "LB");
+//        rightBack = hardwareMap.get(DcMotor.class, "RB");
 
 
         // run until the end of the match (driver presses STOP)
