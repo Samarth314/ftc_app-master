@@ -41,10 +41,12 @@ public class PracticeLinearOpMode extends LinearOpMode {
 
 
         // run until the end of the match (driver presses STOP)
+        waitForStart();
         while (opModeIsActive()) {
 
-            rightFront.setPower(0.7);
-            sleep(5000);
+//            rightFront.setPower(0.7);
+////            sleep(500);
+//            rightFront.setPower(0);
             setRightPower(gamepad1.right_stick_y);
             telemetry.update();
 
