@@ -26,18 +26,18 @@ import com.qualcomm.robotcore.util.Range;
 public class PracticeLinearOpMode extends LinearOpMode {
 
     private DcMotor rightFront;
-//    private DcMotor leftFront;
-//    private DcMotor leftBack;
-//    private DcMotor rightBack;
+    private DcMotor leftFront;
+    private DcMotor leftBack;
+    private DcMotor rightBack;
 
 
     @Override
     public void runOpMode() {
 
-//        leftFront = hardwareMap.get(DcMotor.class, "LF");
+        leftFront = hardwareMap.get(DcMotor.class, "LF");
         rightFront = hardwareMap.get(DcMotor.class, "RF");
-//        leftBack =  hardwareMap.get(DcMotor.class, "LB");
-//        rightBack = hardwareMap.get(DcMotor.class, "RB");
+        leftBack =  hardwareMap.get(DcMotor.class, "LB");
+        rightBack = hardwareMap.get(DcMotor.class, "RB");
 
 
         // run until the end of the match (driver presses STOP)
@@ -48,6 +48,7 @@ public class PracticeLinearOpMode extends LinearOpMode {
 ////            sleep(500);
 //            rightFront.setPower(0);
             setRightPower(gamepad1.right_stick_y);
+            setLeftPower(gamepad1.left_stick_x);
             telemetry.update();
 
         }
@@ -56,6 +57,14 @@ public class PracticeLinearOpMode extends LinearOpMode {
     public void setRightPower(double rightPower){
 
         rightFront.setPower(rightPower);
+        rightBack.setPower(rightPower);
+
+    }
+
+    public void setLeftPower(double leftPower){
+
+        leftFront.setPower(leftPower);
+        leftBack.setPower(leftPower);
 
     }
 
