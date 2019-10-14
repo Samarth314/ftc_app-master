@@ -58,7 +58,7 @@ public class PracticeLinearOpMode extends LinearOpMode {
     public void setRightPower(double rightPower){
 
         rightFront.setPower(rightPower);
-        telemetry.addLine("hello world");
+        telemetry.addLine("hello world"); //used to display text on the program's interface
     }
 
 //    public void setLeftPower(double leftPower){
