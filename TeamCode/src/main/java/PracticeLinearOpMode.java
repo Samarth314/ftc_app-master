@@ -34,20 +34,22 @@ public class PracticeLinearOpMode extends LinearOpMode {
     @Override
     public void runOpMode() {
 
-//        leftFront = hardwareMap.get(DcMotor.class, "LF");
+        leftFront = hardwareMap.get(DcMotor.class, "LF");
         rightFront = hardwareMap.get(DcMotor.class, "RF");
-//        leftBack =  hardwareMap.get(DcMotor.class, "LB");
-//        rightBack = hardwareMap.get(DcMotor.class, "RB");
+        leftBack =  hardwareMap.get(DcMotor.class, "LB");
+        rightBack = hardwareMap.get(DcMotor.class, "RB");
 
 
         // run until the end of the match (driver presses STOP)
         waitForStart();
         while (opModeIsActive()) {
 
-//            rightFront.setPower(0.7);
-////            sleep(500);
-//            rightFront.setPower(0);
-            setRightPower(gamepad1.right_stick_y);
+            rightFront.setPower(0.7);
+            sleep(5000);
+            rightFront.setPower(0);
+
+
+//            setRightPower(gamepad1.right_stick_y);
 //            setLeftPower(gamepad1.left_stick_x);
 
             telemetry.update ();
@@ -58,17 +60,18 @@ public class PracticeLinearOpMode extends LinearOpMode {
     public void setRightPower(double rightPower){
 
         rightFront.setPower(rightPower);
+        rightBack.setPower(rightPower);
         telemetry.addLine("hello world"); //used to display text on the program's interface
     }
 
-//    public void setLeftPower(double leftPower){
-//
-//        leftFront.setPower(leftPower);
-//        leftBack.setPower(leftPower);
+    public void setLeftPower(double leftPower){
+
+        leftFront.setPower(leftPower);
+        leftBack.setPower(leftPower);
 
 
-//
-//    }
+
+    }
 
 
 }
