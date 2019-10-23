@@ -31,6 +31,7 @@ public class PracticeLinearOpMode extends LinearOpMode {
     private DcMotor rightBack;
 
 
+
     @Override
     public void runOpMode() {
 
@@ -38,7 +39,7 @@ public class PracticeLinearOpMode extends LinearOpMode {
         rightFront = hardwareMap.get(DcMotor.class, "RF");
         leftBack =  hardwareMap.get(DcMotor.class, "LB");
         rightBack = hardwareMap.get(DcMotor.class, "RB");
-
+        Auton auton = new Auton(leftFront, leftBack, rightFront, rightBack);
 
         // run until the end of the match (driver presses STOP)
         waitForStart();
