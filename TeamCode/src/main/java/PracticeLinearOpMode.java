@@ -40,6 +40,7 @@ public class PracticeLinearOpMode extends LinearOpMode {
         rightFront = hardwareMap.get(DcMotor.class, "RF");
         leftBack =  hardwareMap.get(DcMotor.class, "LB");
         rightBack = hardwareMap.get(DcMotor.class, "RB");
+
 //        Auton auton = new Auton(leftFront, leftBack, rightFront, rightBack);
 
         // run until the end of the match (driver presses STOP)
@@ -55,7 +56,6 @@ public class PracticeLinearOpMode extends LinearOpMode {
 
             setRightPower(gamepad1.right_stick_y);
             setLeftPower(gamepad1.left_stick_y);
-            setArmPower(gamepad1.right_stick_x);
 
             telemetry.update ();
 
@@ -77,12 +77,12 @@ public class PracticeLinearOpMode extends LinearOpMode {
 
 
     }
-
-    public void setArmPower (double armPower){
-
-        arm.setPower(armPower);
-
-    }
+//
+//    public void setArmPower (double armPower){
+//
+//        arm.setPower(armPower);
+//
+//    }
 
 
 }
