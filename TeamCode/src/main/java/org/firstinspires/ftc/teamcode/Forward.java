@@ -30,14 +30,15 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR
 TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-package org.firstinspires.ftc.teamcode;
-
+package org.firstinspires.ftc.robotcontroller.external.samples;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 
 /**
  * This file contains an minimal example of a Linear "OpMode". An OpMode is a 'program' that runs in either
@@ -52,20 +53,59 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="SampleLinearOpMode", group="Linear Opmode")  // @Autonomous(...) is the other common choice
+@TeleOp(name="Reading Color Sensor", group="Linear Opmode")  // @Autonomous(...) is the other common choice
 //@Disabled
 public class TemplateOpMode_Linear extends LinearOpMode {
 
     /* Declare OpMode members. */
+    ColorSensor color_sensor;
+
     private ElapsedTime runtime = new ElapsedTime();
     // DcMotor leftMotor = null;
     // DcMotor rightMotor = null;
 
     @Override
+    public void init() {
+        color_sensor = hardwareMap.colorSensor.get("color");
+    }
     public void runOpMode() throws InterruptedException {
         telemetry.addData("Status", "Initialized");
         telemetry.update();
+        color_sensor.red();   // Red channel value
+        color_sensor.green(); // Green channel value
+        color_sensor.blue();  // Blue channel value
 
+        color_sensor.alpha(); // Total luminosity
+        color_sensor.argb();  // Combined color value
+        color_sensor.enableLed(true);  // Turn the LED on
+        color_sensor.enableLed(false); // Turn the LED off
+
+        int redValue = robot.beaconColorSensor.red();
+        int valRed = telemetry.addData(redValue);
+        //int greenValue = robot.beaconColorSensor.green();
+        //int blueValue = robot.beaconColorSensor.blue();
+        boolean isRed = redValue > blueValue && redValue > greenValue;
+        if (valRed < 40) {
+            telemetry.addData("Move forward");
+        }
+        //boolean isBlue = blueValue > redValue && blueValue > greenValue;
+//
+// Determine which button to push and do it.
+//
+        /*if (alliance == FtcAuto.Alliance.RED_ALLIANCE && isRed ||
+                alliance == FtcAuto.Alliance.BLUE_ALLIANCE && isBlue)
+        {
+            robot.rightButtonPusher.extend();
+            rightPusherExtended = true;
+        }
+        else if (alliance == FtcAuto.Alliance.RED_ALLIANCE && isBlue ||
+                alliance == FtcAuto.Alliance.BLUE_ALLIANCE && isRed)
+        {
+            robot.leftButtonPusher.extend();
+            leftPusherExtended = true;
+        }
+        */
+         */
         /* eg: Initialize the hardware variables. Note that the strings used here as parameters
          * to 'get' must correspond to the names assigned during the robot configuration
          * step (using the FTC Robot Controller app on the phone).
@@ -92,6 +132,9 @@ public class TemplateOpMode_Linear extends LinearOpMode {
             // rightMotor.setPower(-gamepad1.right_stick_y);
 
             idle(); // Always call idle() at the bottom of your while(opModeIsActive()) loop
+
+            //reading the color sensor
+
         }
     }
 }
